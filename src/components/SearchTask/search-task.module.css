@@ -1,0 +1,16 @@
+.formSearchTask {
+	position: relative;
+}
+
+.inputSearchTask {
+	border: 2px solid var(--primary-color);
+	border-radius: 5px;
+	color: var(--primary-color);
+
+	font-size: 2rem;
+	line-height: 2.5rem;
+	height: 40px;
+	width: 50%;
+	padding: 0;
+	margin-bottom: 40px;
+}

@@ -1,7 +1,10 @@
-export const requestChangeChecked = (target, refreshTodos, todos) => {
-	const targetIndex = todos.findIndex((todo) => todo.id === target.id);
+import { findIndex } from '../utils/index.js';
+import { TODOS } from '../const/path.js';
 
-	fetch(`http://localhost:3000/todos/${target.id}`, {
+export const requestChangeChecked = (target, refreshTodos, todos) => {
+	const targetIndex = findIndex(todos, target.id);
+
+	fetch(`${TODOS}/${target.id}`, {
 		method: 'PUT',
 		headers: {
 			'Content-Type': 'application/json;charset=utf-8',

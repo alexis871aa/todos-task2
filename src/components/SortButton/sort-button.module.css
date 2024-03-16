@@ -1,0 +1,46 @@
+.checkbox {
+	display: none;
+}
+
+.sortTaskButton {
+	display: inline-block;
+	cursor: pointer;
+	background-color: var(--primary-color);
+	color: var(--text-color);
+	border: none;
+	padding: 5px 20px;
+	border-radius: 5px;
+
+	font-size: 1.5rem;
+	line-height: 3.3rem;
+
+	transition: 0.2s ease;
+	position: relative;
+	margin-left: 10px;
+	top: -1px;
+}
+
+.checkbox:checked + .sortTaskButton {
+	opacity: 0.8;
+	border: black 2px solid
+}
+
+.sortTaskButtonDisabled {
+	display: inline-block;
+	cursor: pointer;
+	pointer-events: none;
+	background-color: var(--primary-color);
+	color: var(--text-color);
+	border: none;
+	padding: 5px 20px;
+	border-radius: 5px;
+
+	font-size: 1.5rem;
+	line-height: 3.3rem;
+
+	transition: 0.2s ease;
+	position: relative;
+	margin-left: 10px;
+	top: -1px;
+}
+
