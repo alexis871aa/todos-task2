@@ -1,7 +1,13 @@
 import { useState } from 'react';
 import { TODOS } from '../const/path.js';
 
-export const useRequestHandleDeleteButton = (refreshTodos, todos, setError, setValue) => {
+export const useRequestHandleDeleteButton = (
+	refreshTodos,
+	todos,
+	setError,
+	setValue,
+	navigate,
+) => {
 	const [isDeleting, setIsDeleting] = useState(false);
 	const handleDeleteButton = ({ target }) => {
 		setIsDeleting(true);
@@ -14,6 +20,7 @@ export const useRequestHandleDeleteButton = (refreshTodos, todos, setError, setV
 				setIsDeleting(false);
 				setError('');
 				setValue('');
+				navigate(-1);
 				refreshTodos();
 			});
 	};

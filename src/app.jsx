@@ -7,11 +7,18 @@ import {
 	useRequestSearchTask,
 } from './hooks/index.js';
 import { AppLayout } from './app-layout.jsx';
+import { ErrorPage, TaskPage } from './components';
 import { useRef, useState } from 'react';
+import { Route, Routes, Navigate, useNavigate } from 'react-router-dom';
 
 export const App = () => {
 	const [refreshTodosFlag, setRefreshTodosFlag] = useState(false);
 	const [isPressing, setIsPressing] = useState(false);
+	const navigate = useNavigate();
+
+	const handleTask = ({ target }) => {
+		navigate(`/task/${target.id}`);
+	};
 
 	const refreshTodos = () => setRefreshTodosFlag(!refreshTodosFlag);
 	const inputRef = useRef(null);
@@ -42,6 +49,7 @@ export const App = () => {
 		todos,
 		setError,
 		setValue,
+		navigate,
 	);
 
 	const { isChanging, handleChangeButton } = useRequestHandleChangeButton(
@@ -49,32 +57,39 @@ export const App = () => {
 		todos,
 	);
 
+	const props = {
+		todos,
+		value,
+		error,
+		inputRef,
+		searchValue,
+		isError,
+		isCreating,
+		isPressing,
+		setIsPressing,
+		handleSubmit,
+		handleChangeValue,
+		searchChangeValue,
+		isLoading,
+		isSorting,
+		handleTask,
+		refreshTodos,
+		setError,
+		isSearching,
+		isChanging,
+		isDeleting,
+		handleOnChangeChecked: ({ target }) =>
+			requestChangeChecked(target, refreshTodos, todos),
+		handleChangeButton,
+		handleDeleteButton,
+	};
+
 	return (
-		<AppLayout
-			todos={todos}
-			isLoading={isLoading}
-			isSorting={isSorting}
-			isPressing={isPressing}
-			setIsPressing={setIsPressing}
-			inputRef={inputRef}
-			isCreating={isCreating}
-			handleSubmit={handleSubmit}
-			isDeleting={isDeleting}
-			handleDeleteButton={handleDeleteButton}
-			isChanging={isChanging}
-			handleChangeButton={handleChangeButton}
-			value={value}
-			handleChangeValue={handleChangeValue}
-			handleOnChangeChecked={({ target }) =>
-				requestChangeChecked(target, refreshTodos, todos)
-			}
-			refreshTodos={refreshTodos}
-			error={error}
-			isError={isError}
-			setError={setError}
-			searchChangeValue={searchChangeValue}
-			searchValue={searchValue}
-			isSearching={isSearching}
-		/>
+		<Routes>
+			<Route path="/" element={<AppLayout {...props} />}></Route>
+			<Route path="/task/:id" element={<TaskPage {...props} />}></Route>
+			<Route path="/404" element={<ErrorPage />} />
+			<Route path="*" element={<Navigate to="/404" replace={true} />} />
+		</Routes>
 	);
 };

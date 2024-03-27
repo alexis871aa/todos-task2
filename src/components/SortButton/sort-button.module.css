@@ -12,12 +12,12 @@
 	border-radius: 5px;
 
 	font-size: 1.5rem;
-	line-height: 3.3rem;
+	line-height: 3.5rem;
 
 	transition: 0.2s ease;
 	position: relative;
 	margin-left: 10px;
-	top: -1px;
+	top: -2px;
 }
 
 .checkbox:checked + .sortTaskButton {

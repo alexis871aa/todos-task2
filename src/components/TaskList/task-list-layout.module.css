@@ -1,36 +1,5 @@
-.deleteButton,
-.changeButton {
-	cursor: pointer;
-	height: 44px;
-	background-color: var(--primary-color);
-	color: var(--text-color);
-	border: none;
-	padding: 5px 20px;
-	border-radius: 5px;
-
-	font-size: 1.5rem;
-	line-height: 2.5rem;
-
-	transition: 0.2s ease;
-	position: relative;
-	margin-left: 10px;
-}
-
-.deleteButton:hover {
-	background-color: var(--delete-button-background);
-}
-
-.changeButton:hover {
-	background-color: var(--change-button-background);
-}
-
-.deleteButton:disabled,
-.changeButton:disabled {
-	opacity: 0.5;
-}
-
 .taskItem {
-	width: 100%;
+	width: 360px;
 	font-size: 1.5rem;
 	line-height: 2.5rem;
 	border-bottom: 2px solid var(--primary-color);
@@ -54,50 +23,5 @@
 .taskItemText {
 	font-size: 2rem;
 	line-height: 2.5rem;
-}
-
-.checkboxFormCheckbox + label {
-	display: block;
-	margin: 0.2em;
 	cursor: pointer;
-	padding: 0.2em;
-}
-
-.checkboxFormCheckbox  {
-	display: none;
-}
-
-.checkboxFormCheckbox + label:before {
-	content: "\2714";
-	border: 0.1em solid var(--checkbox-border-color);
-	border-radius: 0.2em;
-	display: inline-block;
-	width: 1em;
-	height: 1em;
-	padding-left: 0.2em;
-	padding-bottom: 0.3em;
-	margin-right: 0.2em;
-	vertical-align: bottom;
-	color: transparent;
-	transition: .2s;
-}
-
-.checkboxFormCheckbox + label:active:before {
-	transform: scale(0);
-}
-
-.checkboxFormCheckbox:checked + label:before {
-	background-color: var(--checkbox-checked-background);
-	border-color: var(--checkbox-checked-background);
-	color: var(--checkbox-text-color);
-}
-
-.checkboxFormCheckbox:disabled + label:before {
-	transform: scale(1);
-}
-
-.checkboxFormCheckbox:checked:disabled + label:before {
-	transform: scale(1);
-	background-color: var(--checkbox-checked-background);
-	border-color: var(--checkbox-checked-background);
 }
